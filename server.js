@@ -10,7 +10,7 @@ var Article = require("./models/article");
 // Create a new express app
 var app = express();
 // Sets an initial port. We'll use this later in our listener
-var PORT = process.env.PORT || 3001;
+var PORT = process.env.PORT || 3000;
 
 // Run Morgan for Logging
 app.use(logger("dev"));
@@ -40,6 +40,11 @@ db.once("open", function() {
 // Main "/" Route. This will redirect the user to our rendered React application
 app.get("/", function(req, res) {
   res.sendFile(__dirname + "/public/index.html");
+});
+
+app.get('/query', function(req, res){
+	console.log('Hit');
+	res.send('Done');
 });
 
 // This is the route we will send GET requests to retrieve our most recent click data.
