@@ -6,6 +6,9 @@ var ArticleSchema = new Schema({
 	title: {
 		type: String
 	},
+	url: {
+		type: String
+	},
 	body: {
 		type: String
 	}

@@ -10,27 +10,40 @@ var helpers = require("./utils/helpers.js");
 
 var Main = React.createClass({
 	getInitialState: function(){
-		return {searchTerm: 'Start', startYear: '', endYear: '', response: [''] }
+		return {searchTerm: '',
+				startYear: '',
+				endYear: '',
+				articleTitle: '',
+				articleUrl: '',
+				articleDescription: '' }
 	},
-	passSearch: function(response) {
-		console.log('Main response: ' + response)
+
+    passSearch: function(term, start, end){
     	this.setState({
-    		response : response
-    	});
+          searchTerm: term,
+          startYear: start,
+          endYear: end
+        });
     },
 
-    componentDidUpdate: function(){
-    	
+    passArticle: function(title, url, description){
+    	this.setState({
+    		articleTitle: title,
+    		articleUrl: url,
+    		articleDescription: description
+    	})
     },
+
 	render(){
 		return (
 			<div className = 'container'>
 				<div className = 'row'>
 					<div className = 'col-md-12'>
 						<Head />
-						<Search passSearch={this.passSearch} searchTerm={this.state.searchTerm} startYear={this.state.startYear} endYear={this.state.endYear} />
-						<Display passResponse={[this.state.response]} />
-						<Archive />
+						{this.state.articleTitle}
+						<Search passSearch={this.passSearch} />
+						<Display passArticle={this.passArticle} searchTerm={this.state.searchTerm} startYear={this.state.startYear} endYear={this.state.endYear} />
+						<Archive title={this.state.articleTitle} url={this.state.articleUrl} description={this.state.articleDescription}/>
 					</div>
 				</div>
 			</div>

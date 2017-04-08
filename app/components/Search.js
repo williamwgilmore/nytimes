@@ -1,11 +1,8 @@
 var React = require('react');
-var helpers = require("../utils/helpers.js");
-
 
 var Search = React.createClass({
-	getInitialState: function(){
-		return {clicks: 0}
-	},
+	// getInitialState: function(){
+	// },
 
 	handleSearchTerm: function(e){
 		this.setState({searchTerm: e.target.value});
@@ -17,36 +14,26 @@ var Search = React.createClass({
 		this.setState({endYear: e.target.value});
 	},
 
-	handleClick: function() {
-    	helpers.sendQuery(this.state.searchTerm, this.state.startYear, this.state.endYear)
-      	.then(function(response) {
-	        
-	        this.props.passSearch({
-	        	response: response
-	        });
-	      
-	        console.log('Successful search');
-	    }.bind(this));
-  	},
+	handleClick: function(){
+		this.props.passSearch(this.state.searchTerm, this.state.startYear, this.state.endYear)
+	},
 
 	render: function(){
 		return(
 			<div className = 'container'>
 				<div className = 'row'>
 					<div className = 'col-md-12'>
-						<div className = 'jumbotron'>
+						<div className = 'component clearfix'>
+							<h2>Search:</h2>
 							<form>
   								<div className="form-group">
-    								<label>Search Term:</label>
-    								<input type="text" onChange={this.handleSearchTerm} className="form-control" placeholder="Search for..." />
+    								<input type="text" onChange={this.handleSearchTerm} className="form-control" placeholder="Keywords" />
   								</div>
   								<div className="form-group">
-    								<label>Start Year:</label>
-    								<input type="text" onChange={this.handleStartYear} className="form-control" placeholder="Default 2000" />
+    								<input type="text" onChange={this.handleStartYear} className="form-control" placeholder="Start year (2000)" />
   								</div>
   								<div className="form-group">
-    								<label>End Year:</label>
-    								<input type="text" onChange={this.handleEndYear} className="form-control" placeholder="Default 2017" />
+    								<input type="text" onChange={this.handleEndYear} className="form-control" placeholder="End year (2017)" />
   								</div>
     							<button type="button" className="btn btn-primary pull-right"
     							onClick={this.handleClick}>Submit</button>

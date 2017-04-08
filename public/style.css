@@ -1,0 +1,32 @@
+.singleArticle{
+	margin: 5px;
+	padding-left: 5px;
+	background: #fafafa;
+	text-align: justify;
+}
+
+.component{
+	margin: 10px;
+	padding: 10px;
+	background: white;
+}
+
+.saveButton{
+	margin-top:10px;
+}
+
+body{
+	background: #404040;
+}
+
+h2{
+	font-size: 24px;
+}
+
+a{
+	color: #000099;
+}
+
+p{
+	padding-right: 5px;
+}

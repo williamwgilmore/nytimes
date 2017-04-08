@@ -3,8 +3,11 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
+var axios = require("axios");
+var React = require("react");
+var ReactDOM = require("react-dom");
 
-// Require Click schema
+// Require mongodb article schema
 var Article = require("./models/article");
 
 // Create a new express app
@@ -42,10 +45,32 @@ app.get("/", function(req, res) {
   res.sendFile(__dirname + "/public/index.html");
 });
 
-app.get('/query', function(req, res){
-	console.log('Hit');
-	res.send('Done');
+app.get("/articles", function(req, res) {
+
+  Article.find({}).exec(function(error, data) {
+    if (error) {
+      res.send(error);
+    } else {
+      res.send(data);
+    }
+  });
 });
+
+app.post("/save", function(req, res) {
+  // Create a new note and pass the req.body to the entry
+  var article = new Article(req.body);
+
+  // And save the new note the db
+  article.save(function(error, doc) {
+    // Log any errors
+    if (error) {
+      console.log(error);
+    } else {
+      res.send(doc);
+    }
+  });
+});
+
 
 // This is the route we will send GET requests to retrieve our most recent click data.
 // We will call this route the moment our page gets rendered
