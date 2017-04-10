@@ -15,7 +15,8 @@ var Main = React.createClass({
 				endYear: '',
 				articleTitle: '',
 				articleUrl: '',
-				articleDescription: '' }
+				articleDescription: ''
+			}
 	},
 
     passSearch: function(term, start, end){
@@ -26,7 +27,7 @@ var Main = React.createClass({
         });
     },
 
-    passArticle: function(title, url, description){
+    passArticle: function(title, url, description, id){
     	this.setState({
     		articleTitle: title,
     		articleUrl: url,
@@ -40,10 +41,9 @@ var Main = React.createClass({
 				<div className = 'row'>
 					<div className = 'col-md-12'>
 						<Head />
-						{this.state.articleTitle}
 						<Search passSearch={this.passSearch} />
 						<Display passArticle={this.passArticle} searchTerm={this.state.searchTerm} startYear={this.state.startYear} endYear={this.state.endYear} />
-						<Archive title={this.state.articleTitle} url={this.state.articleUrl} description={this.state.articleDescription}/>
+						<Archive title={this.state.articleTitle} url={this.state.articleUrl} description={this.state.articleDescription} id={this.state.id}/>
 					</div>
 				</div>
 			</div>

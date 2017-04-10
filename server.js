@@ -71,6 +71,17 @@ app.post("/save", function(req, res) {
   });
 });
 
+app.post('/delete', function(req, res){
+  console.log(req.body);
+  Article.findOneAndRemove( { id : req.body }, function(err, doc){
+    if (err) {
+      console.log(err);
+    } else {
+      res.send(doc);
+    }
+  });
+});
+
 
 // This is the route we will send GET requests to retrieve our most recent click data.
 // We will call this route the moment our page gets rendered

@@ -15,6 +15,11 @@
 	margin-top:10px;
 }
 
+.removeButton{
+	margin-top:10px;
+	margin-left:80px;
+}
+
 body{
 	background: #404040;
 }

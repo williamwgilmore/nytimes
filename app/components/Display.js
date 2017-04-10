@@ -44,7 +44,7 @@ var Display = React.createClass({
 			}
 		}
 		//pass the article info to Main.js, this will allow Main to send it to Archive.js
-		this.props.passArticle(this.state.data[index].headline.main, this.state.data[index].web_url, this.state.data[index].lead_paragraph);
+		this.props.passArticle(this.state.data[index].headline.main, this.state.data[index].web_url, this.state.data[index].lead_paragraph, this.state.data[index]._id);
 	},
 	
 	render: function(){

@@ -3,13 +3,14 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var ArticleSchema = new Schema({
+
 	title: {
 		type: String
 	},
 	url: {
 		type: String
 	},
-	body: {
+	description: {
 		type: String
 	}
 });
