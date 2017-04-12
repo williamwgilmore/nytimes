@@ -26,6 +26,7 @@ var helpers = {
     return axios.post('/save', article);
   },
   removeArticle: function(_id){
+    console.log(_id);
     return axios.post('/delete', {id: _id});
   }
     

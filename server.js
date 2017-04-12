@@ -13,7 +13,7 @@ var Article = require("./models/article");
 // Create a new express app
 var app = express();
 // Sets an initial port. We'll use this later in our listener
-var PORT = process.env.PORT || 3000;
+var PORT = process.env.PORT || 3001;
 
 // Run Morgan for Logging
 app.use(logger("dev"));
@@ -73,10 +73,11 @@ app.post("/save", function(req, res) {
 
 app.post('/delete', function(req, res){
   console.log(req.body);
-  Article.findOneAndRemove( { id : req.body }, function(err, doc){
+  Article.deleteOne( { _id : req.body }, function(err, doc){
     if (err) {
       console.log(err);
     } else {
+      console.log(doc);
       res.send(doc);
     }
   });
