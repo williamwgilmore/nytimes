@@ -6,6 +6,8 @@ var mongoose = require("mongoose");
 var axios = require("axios");
 var React = require("react");
 var ReactDOM = require("react-dom");
+var ObjectId = require('mongoose').Types.ObjectId;
+
 
 // Require mongodb article schema
 var Article = require("./models/article");
@@ -72,12 +74,15 @@ app.post("/save", function(req, res) {
 });
 
 app.post('/delete', function(req, res){
-  console.log(req.body);
-  Article.deleteOne( { _id : req.body }, function(err, doc){
+  // console.log(req.body);
+  var argument = new ObjectId(req.body._id);
+  console.log(argument);
+  console.log(argument.toString());
+
+  Article.deleteOne( { _id: argument }, function(err, doc){
     if (err) {
       console.log(err);
     } else {
-      console.log(doc);
       res.send(doc);
     }
   });

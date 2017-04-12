@@ -27,7 +27,7 @@ var helpers = {
   },
   removeArticle: function(_id){
     console.log(_id);
-    return axios.post('/delete', {id: _id});
+    return axios.post('/delete', {_id: _id});
   }
     
 };
